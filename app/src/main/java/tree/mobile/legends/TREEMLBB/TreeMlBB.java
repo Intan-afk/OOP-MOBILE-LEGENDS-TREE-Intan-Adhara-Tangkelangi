@@ -78,13 +78,13 @@ public class TreeMlBB {
         return count;
     }
     public static void printPathToTarget(ItemNode node, String target, List<String> path) {
-        path.add(node.name);
+        path.add(node.getName());
 
-        if (node.name.equalsIgnoreCase(target)) {
+        if (node.getName().equalsIgnoreCase(target)) {
             System.out.println(String.join(" -> ", path));
         }
 
-        for (ItemNode child : node.children) {
+        for (ItemNode child : node.getChildren()) {
             printPathToTarget(child, target, path);
         }
 

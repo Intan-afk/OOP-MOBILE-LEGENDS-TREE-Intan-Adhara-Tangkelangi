@@ -10,41 +10,168 @@ import java.util.Scanner;
 
 import tree.mobile.legends.ItemMLBB.ItemNode;
 import tree.mobile.legends.TREEMLBB.TreeMlBB;
-
+// gunakan tipe general tree
 public class App {
     public static void main(String[] args) {
 
         // Create sample item tree
-        ItemNode root = new ItemNode("Malefic Gun", "Item utama");//root
+        ItemNode expertGloves = new ItemNode("Expert Gloves", "Basic Item (+30 Adaptive Attack)");
+        ItemNode bookOfSages = new ItemNode("Book of Sages", "Basic Item (+8 Magic Power + 5% Cooldown Reduction)");
+        ItemNode magicNecklace = new ItemNode("Magic Necklace", "Basic Item (+2 Mana Regen)");
+        ItemNode powerCrystal = new ItemNode("Power Crystal", "Basic Item (+280 mana)");
+        ItemNode mysteryCodex = new ItemNode("Mystery Codex", "Basic Item (+15 Magic Power)");
+        ItemNode knife = new ItemNode("Knife", "Basic Item From Attack (+10% Attack Speed)");
+        ItemNode vitalityCrystal = new ItemNode("Vitality Crystal", "Basic Item from Defense (+230 HP)");
+        ItemNode herosRing = new ItemNode("Hero's Ring", "Basic Item from Defense (+150 HP + 5% Cooldown Reduction)");
+        ItemNode lanternOfHope = new ItemNode("Lantern of Hope", "Basic Item Just For Floryn (+20 Magic Power +4% Movement Speed +2% Cooldown Reduction)");
+        ItemNode flowerOfHope = new ItemNode("Flower of Hope", "Basic Item Just For Floryn (+30% Total Physical Attack +30% Total Magic Power)");
 
-        ItemNode leftItem = new ItemNode("Fury Hammer", "Item kedua");
-        ItemNode rightItem = new ItemNode("Knife", "Item ketiga");
-        ItemNode bottomItem = new ItemNode("Knife", "Item keempat");
+        // 2. TIER 2 
+        ItemNode tomeOfEvil = new ItemNode("Tome of Evil", "Tier 2 Item (+15% Magic Power +8% Spell Vamp)");
+        tomeOfEvil.addChild(magicNecklace);
+        tomeOfEvil.addChild(bookOfSages);
 
-        root.addChild(leftItem);
-        root.addChild(rightItem);
-        root.addChild(bottomItem);
+        ItemNode azureBlade = new ItemNode("Azure Blade", "Tier 2 Item (+5% Mana Regen +5% Cooldown Reduction)");
+        azureBlade.addChild(magicNecklace);
+        azureBlade.addChild(magicNecklace);
 
-        ItemNode dagger = new ItemNode("Dagger", "Item terakir");
-        leftItem.addChild(dagger);
+        ItemNode exoticVeil = new ItemNode("Exotic Veil", "Tier 2 Item (+30% Magic Power +5% Movement Speed)");
+        exoticVeil.addChild(mysteryCodex);
+
+        ItemNode elegantGem = new ItemNode("Elegant Gem", "Tier 2 Item (+300 Hp +380 Mana)");
+        elegantGem.addChild(powerCrystal);
+        elegantGem.addChild(vitalityCrystal);
+
+        ItemNode swiftCrossbow = new ItemNode("Swift Crossbow", "Tier 2 Item from Attack (+20% Attack Speed)");
+        swiftCrossbow.addChild(knife);
+        swiftCrossbow.addChild(knife);
+
+        ItemNode mysticContainer = new ItemNode("Mystic Container", "Tier 2 Item (+15 Magic Power +8% Spell Vamp)");
+        mysticContainer.addChild(mysteryCodex);
+
+        ItemNode magicWand = new ItemNode("Magic Wand", "Tier 2 Item (+45 Magic Power)");
+        magicWand.addChild(mysteryCodex);
+
+        // 3. TIER 3 
+        ItemNode enchantedTalisman = new ItemNode("Enchanted Talisman", "Final Item (Mana Regen & CD Reduction)");
+        enchantedTalisman.addChild(tomeOfEvil);
+        enchantedTalisman.addChild(magicNecklace);
+        enchantedTalisman.addChild(magicWand);
+
+        ItemNode featherOfHeaven = new ItemNode("Feather of Heaven", "Final Item (Magic Basic Attack)");
+        featherOfHeaven.addChild(swiftCrossbow);
+        featherOfHeaven.addChild(bookOfSages);
+
+        ItemNode skyPiercer = new ItemNode("Sky Piercer", "Final Item (Best for Finishers)");
+        skyPiercer.addChild(expertGloves);
+        skyPiercer.addChild(expertGloves);
+
+        ItemNode fleetingTime = new ItemNode("Fleeting Time", "Final Item (Ultimate CD Reduction)");
+        fleetingTime.addChild(herosRing);
+        fleetingTime.addChild(herosRing);
+        fleetingTime.addChild(expertGloves);
+
+        ItemNode winterCrown = new ItemNode("Winter Crown", "Final Item (Temporary Invisibility)"); 
+        winterCrown.addChild(expertGloves);
+        winterCrown.addChild(herosRing);
+        winterCrown.addChild(vitalityCrystal);
+
+        ItemNode clockOfDestiny = new ItemNode("Clock of Destiny", "Final Item (For Magic Tanks)");
+        clockOfDestiny.addChild(elegantGem);
+        clockOfDestiny.addChild(bookOfSages);
+        clockOfDestiny.addChild(bookOfSages);
+
+        ItemNode divineGlaive = new ItemNode("Divine Glaive", "Final Item (Magic Penetration)");
+        divineGlaive.addChild(magicWand);
+
+        ItemNode holyCrystal = new ItemNode("Holy Crystal", "Final Item (Max Magic Power)");
+        holyCrystal.addChild(magicWand);
+        holyCrystal.addChild(magicWand);
+        holyCrystal.addChild(magicWand); // Accurately requires 3 Magic Wands!
+
+        ItemNode concentratedEnergy = new ItemNode("Concentrated Energy", "Final Item (Continuous Damage Boost)");
+        concentratedEnergy.addChild(mysticContainer);
+        concentratedEnergy.addChild(magicWand);
+        concentratedEnergy.addChild(vitalityCrystal);
+
+        ItemNode iceQueenWand = new ItemNode("Ice Queen Wand", "Final Item (Slow on Skill Hit)");
+        iceQueenWand.addChild(mysticContainer);
+        iceQueenWand.addChild(exoticVeil);
+        iceQueenWand.addChild(magicWand);
+
+        ItemNode glowingWand = new ItemNode("Glowing Wand", "Final Item (Healing Reduction)");
+        glowingWand.addChild(exoticVeil);
+        glowingWand.addChild(mysteryCodex);
+        glowingWand.addChild(vitalityCrystal);
+
+        ItemNode starliumScythe = new ItemNode("Starlium Scythe", "Final Item (Enhanced Basic Attacks)");
+        starliumScythe.addChild(azureBlade);
+        starliumScythe.addChild(mysticContainer);
+        starliumScythe.addChild(magicWand);
+
+        ItemNode bloodWings = new ItemNode("Blood Wings", "Final Item (Speed Boost Shield)");
+        bloodWings.addChild(magicWand);
+        bloodWings.addChild(magicWand);
+
+        ItemNode lightningTruncheon = new ItemNode("Lightning Truncheon", "Final Item (Splash Damage)");
+        lightningTruncheon.addChild(magicWand);
+        lightningTruncheon.addChild(bookOfSages);
+        lightningTruncheon.addChild(powerCrystal);
+
+        ItemNode geniusWand = new ItemNode("Genius Wand", "Final Item (Magic Defense Reduction)");
+        geniusWand.addChild(exoticVeil);
+        geniusWand.addChild(magicWand);
+
+        ItemNode flaskOfTheOasis = new ItemNode("Flask of the Oasis", "Final Item (Protect Teammates)");
+        flaskOfTheOasis.addChild(magicWand);
+        flaskOfTheOasis.addChild(bookOfSages);
+        flaskOfTheOasis.addChild(vitalityCrystal);
+
+        ItemNode wishingLantern = new ItemNode("Wishing Lantern", "Final Item (Counter High HP)");
+        wishingLantern.addChild(magicWand);
+        wishingLantern.addChild(bookOfSages);
+        wishingLantern.addChild(powerCrystal);
+
+        // 4. THE ROOT NODE 
+        ItemNode magicShop = new ItemNode("Magic Items Shop", "Store Database");
+        
+        magicShop.addChild(enchantedTalisman);
+        magicShop.addChild(featherOfHeaven);
+        magicShop.addChild(skyPiercer);
+        magicShop.addChild(fleetingTime);
+        magicShop.addChild(winterCrown);
+        magicShop.addChild(clockOfDestiny);
+        magicShop.addChild(divineGlaive);
+        magicShop.addChild(holyCrystal);
+        magicShop.addChild(concentratedEnergy);
+        magicShop.addChild(iceQueenWand);
+        magicShop.addChild(glowingWand);
+        magicShop.addChild(starliumScythe);
+        magicShop.addChild(bloodWings);
+        magicShop.addChild(lightningTruncheon);
+        magicShop.addChild(geniusWand);
+        magicShop.addChild(flaskOfTheOasis);
+        magicShop.addChild(wishingLantern);
+        magicShop.addChild(lanternOfHope); 
+        magicShop.addChild(flowerOfHope);
+
 
         // Print the tree structure
         System.out.println("=== Item Build Tree ===");
-        TreeMlBB.printTree(root, 0);
-
+        TreeMlBB.printTree(magicShop, 0);
         
         // Print all build paths
         System.out.println("\n=== All Build Paths ===");
-        TreeMlBB.printAllBuildPaths(root, new ArrayList<>());
+        TreeMlBB.printAllBuildPaths(magicShop, new ArrayList<>());
 
         System.out.println("\n=== COUNT ITEM ===");
-        int count = TreeMlBB.countItemOccurrences(root, "Knife");
+        int count = TreeMlBB.countItemOccurrences(magicShop, "Knife");
         System.out.println("Knife muncul: " + count + " kali");
 
         // Count nodes and leaves, height of the tree
-        System.out.println("\nTotal Nodes: " + TreeMlBB.countNodes(root));
-        System.out.println("Total Leaves: " + TreeMlBB.countLeaves(root));
-        System.out.println("Tree Height: " + TreeMlBB.height(root));
+        System.out.println("\nTotal Nodes: " + TreeMlBB.countNodes(magicShop));
+        System.out.println("Total Leaves: " + TreeMlBB.countLeaves(magicShop));
+        System.out.println("Tree Height: " + TreeMlBB.height(magicShop));
 
         // Find path to a specific item
         Scanner sc = new Scanner(System.in);
@@ -52,14 +179,14 @@ public class App {
         String targetItem = sc.nextLine();
 
         System.out.println("\n=== Path to '" + targetItem + "' ===");
-        TreeMlBB.printPathToTarget(root, targetItem, new ArrayList<>());
+        TreeMlBB.printPathToTarget(magicShop, targetItem, new ArrayList<>());
 
         // Count occurrences of a specific item
-        int result = TreeMlBB.countItemOccurrences(root, targetItem);
+        int result = TreeMlBB.countItemOccurrences(magicShop, targetItem);
         System.out.println("Item '" + targetItem + "' muncul: " + result + " kali");
         // find path to a specific item
         List<String> path = new ArrayList<>();
-        if (TreeMlBB.findPath(root, targetItem, path)) {
+        if (TreeMlBB.findPath(magicShop, targetItem, path)) {
             System.out.println("Path: " + String.join(" -> ", path));
         } else {
             System.out.println("Item tidak ditemukan.");
